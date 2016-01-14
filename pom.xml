@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.gkframework</groupId>
+        <artifactId>gk-fw-base</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.goku.im</groupId>
+    <artifactId>goku-im-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>gk-im-base</module>
+        <module>gk-im-rpc</module>
+        <module>gk-im-persistence</module>
+        <module>gk-im-logic</module>
+        <module>gk-im-pushservice</module>
+    </modules>
+
+
+    <!--  本地私服  -->
+    <repositories>
+        <repository>
+            <id>acfun nexus</id>
+            <url>http://nexus.im.acfun.tv/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>
