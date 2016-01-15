@@ -3,14 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>gk-im-pushservice</artifactId>
+        <artifactId>gk-im-user-rpc</artifactId>
         <groupId>com.goku.im</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.goku.im</groupId>
-    <artifactId>gk-im-pushservice-service</artifactId>
+    <artifactId>gk-im-user-service</artifactId>
+
     <dependencies>
         <!-- junit test 必须引入 -->
         <dependency>
@@ -24,13 +25,15 @@
         </dependency>
         <!-- config 必须引入 -->
         <dependency>
-            <groupId>tv.acframework.config</groupId>
-            <artifactId>ac-config-diamond</artifactId>
+            <groupId>com.gkframework.config</groupId>
+            <artifactId>gk-fw-config-diamond</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!-- dubbo 启动 必须引入 -->
         <dependency>
-            <groupId>tv.acframework.boot</groupId>
-            <artifactId>ac-boot-spring</artifactId>
+            <groupId>com.gkframework.boot</groupId>
+            <artifactId>gk-fw-boot-spring</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!-- collector qos 必须引入 -->
         <dependency>
@@ -43,7 +46,6 @@
             <artifactId>ac-framework-model</artifactId>
             <version>0.1.2-RELEASE</version>
         </dependency>
-
         <!-- orm 操作 必须引入 -->
         <dependency>
             <groupId>tv.acframework.orm</groupId>
@@ -91,6 +93,18 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>tv.acfun.im</groupId>
+            <artifactId>cas-user-api</artifactId>
+            <version>0.1.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tv.acfun.im.relation</groupId>
+            <artifactId>tv-acfun-im-user-relation-api</artifactId>
+            <version>0.1.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>

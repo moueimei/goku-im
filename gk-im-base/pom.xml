@@ -9,13 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.goku.im</groupId>
-    <artifactId>gk-im-persistence</artifactId>
-
+    <groupId>com.goku.im.base</groupId>
+    <artifactId>gk-im-base</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <!--<module>gk-im-persistence-api</module>-->
-        <!--<module>gk-im-persistence-service</module>-->
+        <module>gk-im-connector</module>
+        <module>gk-im-framework</module>
+        <module>gk-im-net</module>
     </modules>
+
 
 </project>

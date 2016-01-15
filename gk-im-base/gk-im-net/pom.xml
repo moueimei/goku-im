@@ -3,19 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>goku-im-parent</artifactId>
-        <groupId>com.goku.im</groupId>
+        <artifactId>gk-im-base</artifactId>
+        <groupId>com.goku.im.base</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.goku.im</groupId>
-    <artifactId>gk-im-persistence</artifactId>
+    <groupId>com.goku.im.base</groupId>
+    <artifactId>gk-im-net</artifactId>
 
-    <packaging>pom</packaging>
-    <modules>
-        <!--<module>gk-im-persistence-api</module>-->
-        <!--<module>gk-im-persistence-service</module>-->
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.0.26.Final</version>
+        </dependency>
+    </dependencies>
 
 </project>

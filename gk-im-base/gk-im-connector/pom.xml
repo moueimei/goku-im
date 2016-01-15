@@ -24,30 +24,22 @@
         </dependency>
         <!-- config 必须引入 -->
         <dependency>
-            <groupId>tv.acframework.config</groupId>
-            <artifactId>ac-config-diamond</artifactId>
+            <groupId>com.gkframework.config</groupId>
+            <artifactId>gk-fw-config-diamond</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!-- dubbo 启动 必须引入 -->
         <dependency>
-            <groupId>tv.acframework.boot</groupId>
-            <artifactId>ac-boot-spring</artifactId>
+            <groupId>com.gkframework.boot</groupId>
+            <artifactId>gk-fw-boot-spring</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!-- collector qos 必须引入 -->
         <dependency>
             <groupId>tv.acframework.qos</groupId>
             <artifactId>ac-qos-collector-dubbo</artifactId>
         </dependency>
-        <!-- model 必须引入-->
-        <dependency>
-            <groupId>tv.acframework.framework</groupId>
-            <artifactId>ac-framework-model</artifactId>
-        </dependency>
 
-        <!-- orm 操作 必须引入 -->
-        <dependency>
-            <groupId>tv.acframework.orm</groupId>
-            <artifactId>ac-orm-mybatis</artifactId>
-        </dependency>
         <!-- dubbo 服务注册方式 start 必须引入-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -81,8 +73,9 @@
             <artifactId>aspectjweaver</artifactId>
         </dependency>
         <dependency>
-            <groupId>tv.acframework</groupId>
-            <artifactId>redis-api</artifactId>
+            <groupId>com.gkframework</groupId>
+            <artifactId>gk-fw-cache-jedis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -102,20 +95,20 @@
         </dependency>
 
         <dependency>
-            <groupId>com.goku.im.net</groupId>
+            <groupId>com.goku.im.base</groupId>
             <artifactId>gk-im-net</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.goku.im.framework</groupId>
+            <groupId>com.goku.im.base</groupId>
             <artifactId>gk-im-framework</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>tv.acfun.im.relation</groupId>
-            <artifactId>gk-im-user-relation-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <groupId>com.goku.im</groupId>
+            <artifactId>gk-im-user-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
