@@ -1,11 +1,12 @@
 package com.goku.im.pushservice.service;
 
-import tv.acfun.im.pushservice.model.Notify;
+
+import com.goku.im.pushservice.model.Notify;
 
 /**
- * Created by milo on 15/12/10.
+ * Created by moueimei on 15/12/10.
  */
-public interface AcImNotifyService
+public interface GkImNotifyService
 {
     /**
      * 发送通知

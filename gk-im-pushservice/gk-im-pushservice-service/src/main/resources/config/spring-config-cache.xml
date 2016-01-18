@@ -24,7 +24,7 @@
 		<constructor-arg value="${redis.port}" name="port" type="int"/>
 	</bean>
 
-	<bean id="jedisHolder" class="com.acfun.redis.JedisHolder" >
+	<bean id="jedisHolder" class="com.goku.redis.JedisHolder" >
 		<property name="jedisPoolMap">
 			<map>
 				<entry key="default" value-ref="defaultRedis"/>
@@ -33,7 +33,7 @@
 	</bean>
 
 
-	<context:component-scan base-package="com.acfun.redis"/>
+	<context:component-scan base-package="com.goku.redis"/>
 
 	<!--使用@Redis注解时必须加上-->
 	<aop:aspectj-autoproxy proxy-target-class="true"/>

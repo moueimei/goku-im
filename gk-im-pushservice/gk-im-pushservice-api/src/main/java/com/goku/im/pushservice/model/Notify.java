@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by milo on 15/12/10.
+ * Created by moueimei on 15/12/10.
  */
 public class Notify implements Serializable
 {
