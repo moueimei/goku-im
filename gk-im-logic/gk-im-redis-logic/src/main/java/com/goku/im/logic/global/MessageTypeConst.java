@@ -4,8 +4,7 @@ package com.goku.im.logic.global;
  * Created by milo on 15/11/26.
  * 消息类型
  */
-public class MessageTypeConst
-{
+public class MessageTypeConst {
     /**
      * 私聊
      */

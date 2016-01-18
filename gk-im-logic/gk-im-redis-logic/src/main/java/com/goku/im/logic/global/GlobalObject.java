@@ -7,8 +7,7 @@ import java.util.concurrent.Executors;
  * Created by milo on 15/11/26.
  * 全局公共对象
  */
-public class GlobalObject
-{
+public class GlobalObject {
     /**
      * 处理接收到的消息的线程池
      */

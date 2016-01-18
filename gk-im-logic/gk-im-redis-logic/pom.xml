@@ -24,25 +24,21 @@
         </dependency>
         <!-- config 必须引入 -->
         <dependency>
+            <groupId>com.gkframework.config</groupId>
+            <artifactId>gk-fw-config-diamond</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!-- boot 必须引入 -->
+        <dependency>
             <groupId>com.gkframework.boot</groupId>
             <artifactId>gk-fw-boot-spring</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!-- collector qos 必须引入 -->
         <dependency>
-            <groupId>tv.acframework.qos</groupId>
-            <artifactId>ac-qos-collector-dubbo</artifactId>
-        </dependency>
-        <!-- model 必须引入-->
-        <dependency>
-            <groupId>tv.acframework.framework</groupId>
-            <artifactId>ac-framework-model</artifactId>
-        </dependency>
-
-        <!-- orm 操作 必须引入 -->
-        <dependency>
-            <groupId>tv.acframework.orm</groupId>
-            <artifactId>ac-orm-mybatis</artifactId>
+            <groupId>com.gkframework.qos</groupId>
+            <artifactId>gk-fw-qos-collector-dubbo</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!-- dubbo 服务注册方式 start 必须引入-->
         <dependency>

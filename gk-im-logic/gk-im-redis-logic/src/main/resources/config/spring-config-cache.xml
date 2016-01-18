@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	   default-autowire="byName">
+	<!--Jedis Pool-->
+	<bean id="jedisPoolFactoryConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redis.maxActive}"/>
+		<property name="maxIdle" value="${redis.maxIdle}"/>
+		<property name="maxWaitMillis" value="${redis.maxWait}"/>
+		<property name="minIdle" value="${redis.minIdle}"/>
+		<property name="numTestsPerEvictionRun" value="${redis.numTestsPerEvictionRun}"/>
+		<property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+		<property name="testOnReturn" value="${redis.testOnReturn}"/>
+		<property name="testWhileIdle" value="${redis.testWhileIdle}"/>
+		<property name="blockWhenExhausted" value="false"/>
+	</bean>
+	<!-- shard redis -->
+	<bean id="defaultRedis" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+		<constructor-arg ref="jedisPoolFactoryConfig" name="poolConfig"/>
+		<constructor-arg value="${redis.ip}" name="host" type="java.lang.String"/>
+		<constructor-arg value="${redis.port}" name="port" type="int"/>
+	</bean>
+
+	<bean id="jedisHolder" class="com.goku.redis.JedisHolder" >
+		<property name="jedisPoolMap">
+			<map>
+				<entry key="default" value-ref="defaultRedis"/>
+			</map>
+		</property>
+	</bean>
+
+
+	<context:component-scan base-package="com.goku.redis"/>
+
+	<!--使用@Redis注解时必须加上-->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+</beans>

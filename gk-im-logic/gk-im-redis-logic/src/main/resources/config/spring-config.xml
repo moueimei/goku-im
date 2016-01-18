@@ -10,7 +10,7 @@
            http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 	   default-autowire="byName">
 	<bean id="propertyConfigurer"
-		  class="tv.acframework.config.diamond.spring.ExtendedPropertyPlaceholderConfigurer">
+		  class="com.gkframework.config.diamond.spring.ExtendedPropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath*:system.properties</value>
@@ -30,7 +30,7 @@
 	<context:annotation-config/>
 
 	<!-- Activates scanning of @Repository and @Service -->
-	<context:component-scan base-package="tv.acfun.im.logic"/>
+	<context:component-scan base-package="com.goku.im.logic"/>
 
-	<bean id="logicStart" class="tv.acfun.im.logic.start.LogicStart" init-method="start"/>
+	<bean id="logicStart" class="com.goku.im.logic.start.LogicStart" init-method="start"/>
 </beans>
