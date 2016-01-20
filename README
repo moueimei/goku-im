@@ -12,7 +12,34 @@ IM项目具体模块如下：
 Quick Start
 ================================================================
 
+![系统架构图](http://xiangce.baidu.com/picture/detail/c05745190831956ac72ce9fb35e7bcbcc77765d0)
 
+dispatcher service : 负责为客户端分配connector集群的服务器IP, 实现负载均衡
+register store : 负责存储客户端对应的connector集群中服务器IP以及用户token
+connector 集群 : 负责和客户端保持长连接, 不负责具体业务细节, 将接收到的消息添加到msg queue 队列供logic集群处理，并且从push queue中获取数据推送至客户端 
+Auth : 用户验证服务, 负责提供用户身份校验
+msg queue : 消息队列, 负责承载客户端发送的消息, 采用redis List结构实现
+push queue ： 推送队列, 由logic集群进行填充，负责消息转发
+logic 集群 :  负责处理具体业务逻辑，并将消息存储到redid、mysql和push queue中
+mysql : 永久存储用户的消息
+redis :  缓存用户的私聊，群组的消息索引以及离线消息等
+push service : 负责推送外部消息, 如加好友，系统消息等
+
+
+准备:
+1. 启动dispatcher 服务
+2. 启动connector集群服务, 并向dispatcher注册, dispatcher负责和connector保持   keepalive来实时监测connector存活状态
+
+流程:
+1: 客户端通过http请求向dispatcher服务申请一个可用的connector
+
+2-4: dispatcher服务访问register store来获取每个connector的连接情况, 并通过负载均衡算法(待定), 选择一个最优的connector返回给客户端(包括重连)
+
+5-8: 客户端通过dispatcher返回的connector进行长连接请求, 如果为登录请求,connector请求auth服务来验证用户,如果验证成功，则connector本机存储用户的连接通道(channel)，并将用户和connector的对应关系以及用户的token存储到register store中供logic查询.如果验证失败，则connector返回错误信息并断开连接.如果为普通消息，则将消息分发至后端的msg queue中
+
+9-12: logic集群从msg queue中获取待处理的消息,经过业务处理, logic集群通过访问register store 获取到目标用户对应的connector, 如果未能获取到用户的connector，证明用户已掉线,将消息保存至redis中(离线消息),如果成功获取到用户的connector，证明用户在线,将推送的消息分发至connector 对应的push queue中,connector集群从自己对应的push queue中获取要发送的数据，查找本地保存的用户连接通道，如果可以找到，证明用户在线, 将消息推送至客户端,如果没找到，则证明客户已掉线，将消息保存至redis中(离线消息)
+			
+13-14: logic集群将消息异步存储到mysql和redis中
 
 ================================================================
 Source Building
