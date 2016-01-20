@@ -3,7 +3,7 @@ package com.goku.im.logic.model;
 import org.json.JSONObject;
 
 /**
- * Created by milo on 15/12/10.
+ * Created by moueimei on 15/12/10.
  * 通知实体类
  */
 public class Notify {

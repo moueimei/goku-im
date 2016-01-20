@@ -10,7 +10,7 @@ import javax.crypto.spec.DESKeySpec;
  */
 public class EncryptUtil {
 
-    public static final byte[] desKey = new byte[]{(byte)64, (byte)-77, (byte)35, (byte)-45, (byte)16, (byte)-22, (byte)121, (byte)-15};
+    public static final byte[] desKey = new byte[]{(byte) 64, (byte) -77, (byte) 35, (byte) -45, (byte) 16, (byte) -22, (byte) 121, (byte) -15};
 
     public EncryptUtil() {
     }
@@ -110,12 +110,12 @@ public class EncryptUtil {
     public static final String encodeHex(byte[] bytes) {
         StringBuffer buf = new StringBuffer(bytes.length * 2);
 
-        for(int i = 0; i < bytes.length; ++i) {
-            if((bytes[i] & 255) < 16) {
+        for (int i = 0; i < bytes.length; ++i) {
+            if ((bytes[i] & 255) < 16) {
                 buf.append("0");
             }
 
-            buf.append(Long.toString((long)(bytes[i] & 255), 16));
+            buf.append(Long.toString((long) (bytes[i] & 255), 16));
         }
 
         return buf.toString();
@@ -126,12 +126,12 @@ public class EncryptUtil {
         byte[] bytes = new byte[chars.length / 2];
         int byteCount = 0;
 
-        for(int i = 0; i < chars.length; i += 2) {
+        for (int i = 0; i < chars.length; i += 2) {
             byte newByte = 0;
             int var6 = newByte | hexCharToByte(chars[i]);
             var6 <<= 4;
             var6 |= hexCharToByte(chars[i + 1]);
-            bytes[byteCount] = (byte)var6;
+            bytes[byteCount] = (byte) var6;
             ++byteCount;
         }
 
@@ -139,46 +139,46 @@ public class EncryptUtil {
     }
 
     private static final byte hexCharToByte(char ch) {
-        switch(ch) {
+        switch (ch) {
             case '0':
-                return (byte)0;
+                return (byte) 0;
             case '1':
-                return (byte)1;
+                return (byte) 1;
             case '2':
-                return (byte)2;
+                return (byte) 2;
             case '3':
-                return (byte)3;
+                return (byte) 3;
             case '4':
-                return (byte)4;
+                return (byte) 4;
             case '5':
-                return (byte)5;
+                return (byte) 5;
             case '6':
-                return (byte)6;
+                return (byte) 6;
             case '7':
-                return (byte)7;
+                return (byte) 7;
             case '8':
-                return (byte)8;
+                return (byte) 8;
             case '9':
-                return (byte)9;
+                return (byte) 9;
             case 'a':
-                return (byte)10;
+                return (byte) 10;
             case 'b':
-                return (byte)11;
+                return (byte) 11;
             case 'c':
-                return (byte)12;
+                return (byte) 12;
             case 'd':
-                return (byte)13;
+                return (byte) 13;
             case 'e':
-                return (byte)14;
+                return (byte) 14;
             case 'f':
-                return (byte)15;
+                return (byte) 15;
             default:
-                return (byte)0;
+                return (byte) 0;
         }
     }
 
     public static boolean md5PasswordCheck(String dbPassword, String password) {
-        if(password == null) {
+        if (password == null) {
             return false;
         } else {
             MD5 m = new MD5();
@@ -186,9 +186,9 @@ public class EncryptUtil {
         }
     }
 
-    public static String  decrytUserId(String tokenValue) {
+    public static String decrytUserId(String tokenValue) {
         String[] tokenDecrytes = tokenValue.split("[a-zA-Z]");
-        if(tokenDecrytes.length==2){
+        if (tokenDecrytes.length == 2) {
             return tokenDecrytes[0];
         }
         return null;

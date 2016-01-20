@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 数据库待处理消息队列,负责存储用户发送的IM消息,由logic集群负责添加,后端persistence集群读取并存入数据库
  */
 @Repository

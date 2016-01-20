@@ -4,7 +4,7 @@ import io.netty.channel.ChannelHandlerContext;
 
 /**
  * 
- * @author zhaodx
+ * @author moueimei
  *
  */
 public class ServerLoggerEntity

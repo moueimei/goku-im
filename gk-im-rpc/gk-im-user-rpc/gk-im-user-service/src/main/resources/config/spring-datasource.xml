@@ -21,7 +21,7 @@
     <context:annotation-config/>
 
     <!-- Activates scanning of @Repository and @Service -->
-    <context:component-scan base-package="tv.acfun.im.relation"/>
+    <context:component-scan base-package="com.goku.im.relation"/>
 	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
@@ -42,7 +42,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-		<property name="typeAliasesPackage" value="tv.acfun.im.relation.entity" />
+		<property name="typeAliasesPackage" value="com.goku.im.relation.entity" />
 		<!-- 显式指定Mapper文件位置 -->
 		<property name="mapperLocations">
 			<list>
@@ -56,7 +56,7 @@
 	
 	<!-- 扫描basePackage下所有以@Repository标识的 接口-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="tv.acfun.im.relation.dao" />
+		<property name="basePackage" value="com.goku.im.relation.dao" />
 		<property name="annotationClass" value="org.springframework.stereotype.Repository"/>
 	</bean>
 
@@ -70,7 +70,7 @@
 	
 	<!--aop-->
     <aop:config>
-        <aop:advisor advice-ref="applicationAdvisor" pointcut="execution(* tv.acfun.im.relation.service.*.*(..))"/>
+        <aop:advisor advice-ref="applicationAdvisor" pointcut="execution(* com.goku.im.relation.service.*.*(..))"/>
     </aop:config>
 
     <!--advisor-->

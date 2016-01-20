@@ -8,7 +8,7 @@ import java.util.Properties;
 
 /**
  * 
- * @author zhaodx
+ * @author moueimei
  *
  */
 public class IniParser 

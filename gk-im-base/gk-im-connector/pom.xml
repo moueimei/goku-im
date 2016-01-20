@@ -36,8 +36,9 @@
         </dependency>
         <!-- collector qos 必须引入 -->
         <dependency>
-            <groupId>tv.acframework.qos</groupId>
-            <artifactId>ac-qos-collector-dubbo</artifactId>
+            <groupId>com.gkframework.qos</groupId>
+            <artifactId>gk-fw-qos-collector-dubbo</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <!-- dubbo 服务注册方式 start 必须引入-->
@@ -89,9 +90,9 @@
 
         <!-- 项目依赖 -->
         <dependency>
-            <groupId>tv.acfun.im</groupId>
-            <artifactId>cas-user-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <groupId>com.goku.user</groupId>
+            <artifactId>goku-user-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

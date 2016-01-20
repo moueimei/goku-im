@@ -1,11 +1,6 @@
 package com.goku.im.connector.handler.action.impl;
 
-import io.netty.channel.Channel;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import com.goku.im.cas.user.AcUserConst;
-import com.goku.im.cas.user.service.LoginService;
+
 import com.goku.im.connector.global.GlobalConfig;
 import com.goku.im.connector.global.ReturnCodeConst;
 import com.goku.im.connector.global.ReturnHelper;
@@ -14,25 +9,29 @@ import com.goku.im.connector.global.common.ActionAckTypeConst;
 import com.goku.im.connector.handler.action.AbstractActionHandler;
 import com.goku.im.connector.logic.UserLogic;
 import com.goku.im.framework.util.StringUtil;
+import com.goku.user.GkUserConst;
+import com.goku.user.service.LoginService;
+import io.netty.channel.Channel;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.Map;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 登录请求处理器
  * 登录请求由客户端发送
  */
 @Controller
-public class RequestLoginHandler extends AbstractActionHandler
-{
+public class RequestLoginHandler extends AbstractActionHandler {
     @Autowired
     UserLogic userLogic;
     @Autowired
     LoginService loginService;
 
     @Override
-    protected ReturnValue handle(Channel channel, JSONObject json) throws Exception
-    {
+    protected ReturnValue handle(Channel channel, JSONObject json) throws Exception {
         ReturnValue value = new ReturnValue();
         String atom = json.optString("atom", null);
         String account = json.optString("account", null);
@@ -40,20 +39,18 @@ public class RequestLoginHandler extends AbstractActionHandler
         String userType = json.optString("user_type", null);
         String ackAction = ActionAckTypeConst.ACK_LOGIN;
 
-        if(StringUtil.isNullOrEmpty(atom)
+        if (StringUtil.isNullOrEmpty(atom)
                 || StringUtil.isNullOrEmpty(account)
                 || StringUtil.isNullOrEmpty(password)
-                || StringUtil.isNullOrEmpty(userType))
-        {
+                || StringUtil.isNullOrEmpty(userType)) {
             ///返回缺少必要参数
             return ReturnHelper.lostNecessaryParameter(ackAction);
         }
 
-        if(atom.length() > 128
+        if (atom.length() > 128
                 || account.length() > 64
                 || password.length() > 64
-                || userType.length() > 16)
-        {
+                || userType.length() > 16) {
             ///返回参数格式错误
             return ReturnHelper.parameterFormatError(ackAction);
         }
@@ -62,7 +59,7 @@ public class RequestLoginHandler extends AbstractActionHandler
         String appId = GlobalConfig.APP_ID;
         String appKey = GlobalConfig.APP_KEY;
         Map<String, String> map = loginService.login(account, password, appId, appKey, userType, channel.remoteAddress().toString());
-        if(null == map) {
+        if (null == map) {
             ///登录失败
             value.setAction(ackAction);
             value.setCode(ReturnCodeConst.LOGIN_FAIL);
@@ -70,11 +67,10 @@ public class RequestLoginHandler extends AbstractActionHandler
             return value;
         }
 
-        String key = AcUserConst.LOGIN_MAP_CODE;
+        String key = GkUserConst.LOGIN_MAP_CODE;
 
         String strCode = map.get(key);
-        if(!StringUtil.isInteger(strCode))
-        {
+        if (!StringUtil.isInteger(strCode)) {
             ///登录失败
             value.setAction(ackAction);
             value.setCode(ReturnCodeConst.LOGIN_FAIL);
@@ -83,30 +79,24 @@ public class RequestLoginHandler extends AbstractActionHandler
         }
 
         int code = Integer.parseInt(strCode);
-        if(code == AcUserConst.ERROR_PASSWORD_CODE)
-        {
+        if (code == GkUserConst.ERROR_PASSWORD_CODE) {
             ///密码错误
             value.setAction(ackAction);
             value.setCode(ReturnCodeConst.USER_PASSWORD_ERROR);
             value.setMessage("密码错误");
             return value;
-        }
-        else if(code == AcUserConst.ERROR_ACCOUNT_CODE)
-        {
+        } else if (code == GkUserConst.ERROR_ACCOUNT_CODE) {
             ///账号不存在
             value.setAction(ackAction);
             value.setCode(ReturnCodeConst.ACCOUNT_NOT_EXITSTS);
             value.setMessage("账号不存在");
             return value;
-        }
-        else if(code == AcUserConst.ERROR_ACCOUNT_BIND_CODE)
-        {
+        } else if (code == GkUserConst.ERROR_ACCOUNT_BIND_CODE) {
             ///未绑定手机号,暂不处理
-            code = AcUserConst.SUCCESS_CODE;
+            code = GkUserConst.SUCCESS_CODE;
         }
 
-        if(code == AcUserConst.SUCCESS_CODE)
-        {
+        if (code == GkUserConst.SUCCESS_CODE) {
             String userToken = map.get("token");
             String strUserId = map.get("userID");
 

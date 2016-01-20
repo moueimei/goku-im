@@ -1,9 +1,9 @@
 package com.goku.im.relation.dao;
 
+import com.gkframework.orm.mybatis.query.Query;
+import com.goku.im.relation.entity.ImUserFriend;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import tv.acframework.orm.mybatis.query.Query;
-import tv.acfun.im.relation.entity.ImUserFriend;
 
 import java.util.List;
 import java.util.Map;

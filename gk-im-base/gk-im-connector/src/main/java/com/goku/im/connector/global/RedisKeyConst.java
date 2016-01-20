@@ -1,10 +1,9 @@
 package com.goku.im.connector.global;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  */
-public class RedisKeyConst
-{
+public class RedisKeyConst {
     /***************************** register redis start *****************************/
     /**
      * 用户对应的connector IP(客户端连接connector时保存)
@@ -101,12 +100,12 @@ public class RedisKeyConst
 
     /**
      * 构建Redis Key
-     * @param prefix  前缀
+     *
+     * @param prefix    前缀
      * @param parameter 参数
      * @return
      */
-    public static String makeKey(String prefix, Object parameter)
-    {
+    public static String makeKey(String prefix, Object parameter) {
         return prefix.concat(parameter.toString());
     }
 }

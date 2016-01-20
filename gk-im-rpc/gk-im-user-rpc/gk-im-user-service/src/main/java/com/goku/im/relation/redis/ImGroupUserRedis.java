@@ -3,7 +3,7 @@ package com.goku.im.relation.redis;
 import java.util.Set;
 
 /**
- * Created by milo on 15/12/1.
+ * Created by moueimei on 15/12/1.
  */
 public interface ImGroupUserRedis
 {

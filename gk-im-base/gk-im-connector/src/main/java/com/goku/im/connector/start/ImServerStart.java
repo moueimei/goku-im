@@ -1,15 +1,14 @@
 package com.goku.im.connector.start;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import com.goku.im.connector.global.GlobalConfig;
 import com.goku.im.connector.util.NetworkUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
- * Created by milo on 15/12/8.
+ * Created by moueimei on 15/12/8.
  */
-public class ImServerStart
-{
+public class ImServerStart {
     @Value("${imserver.port}")
     int imServerPort;
     @Value("${token.expire_days}")
@@ -28,8 +27,7 @@ public class ImServerStart
     @Autowired
     SocketServerStart socketServerStart;
 
-    public void start() throws Exception
-    {
+    public void start() throws Exception {
         ///初始化配置信息
         initConfig();
 
@@ -43,8 +41,7 @@ public class ImServerStart
         socketServerStart.start();
     }
 
-    private void initConfig()
-    {
+    private void initConfig() {
         GlobalConfig.PORT = imServerPort;
         GlobalConfig.TOKEN_EXPIRE_DAYS = tokenExpireDays;
         GlobalConfig.APP_ID = appId;

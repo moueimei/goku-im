@@ -22,9 +22,9 @@
 				payload="88388608"
 				heartbeat="0" />
 		<!-- qos -->
-		<dubbo:annotation package="tv.acframework.qos.collector.dubbo"/>
+		<dubbo:annotation package="com.gkframework.qos.collector.dubbo"/>
 		<!-- 必须有 end-->
 
 		<!-- 声明需要暴露的服务接口 -->
-		<dubbo:service ref="acImNotifyService" interface="tv.acfun.im.pushservice.service.AcImNotifyService" version="1.0.0"/>
+		<dubbo:service ref="gkImNotifyService" interface="com.goku.im.pushservice.service.GkImNotifyService" version="1.0.0"/>
 </beans>

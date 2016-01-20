@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 /**
  * 
- * @author zhaodx
+ * @author moueimei
  *
  */
 public class StringUtil 

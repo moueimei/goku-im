@@ -1,16 +1,13 @@
 package com.goku.im.net.web.server.proxy.impl;
 
-import tv.acfun.im.net.web.server.proxy.ActionLoader;
+
+import com.goku.im.net.web.server.proxy.ActionLoader;
 
 /**
- * 
- * @author zhaodx
- *
+ * @author moueimei
  */
-public class ActionLoaderFactory
-{
-	public static ActionLoader getActionLoader()
-	{
-		return new AnnotationActionLoader();
-	}
+public class ActionLoaderFactory {
+    public static ActionLoader getActionLoader() {
+        return new AnnotationActionLoader();
+    }
 }

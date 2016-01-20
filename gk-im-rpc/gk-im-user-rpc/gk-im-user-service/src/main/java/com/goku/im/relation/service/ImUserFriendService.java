@@ -1,8 +1,8 @@
 package com.goku.im.relation.service;
 
-import tv.acframework.exception.ServiceException;
-import tv.acframework.orm.mybatis.query.Query;
-import tv.acfun.im.relation.entity.ImUserFriend;
+import com.gkframework.exception.ServiceException;
+import com.gkframework.orm.mybatis.query.Query;
+import com.goku.im.relation.entity.ImUserFriend;
 
 import java.util.List;
 

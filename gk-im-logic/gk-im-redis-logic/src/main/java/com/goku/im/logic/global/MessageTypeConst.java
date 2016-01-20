@@ -1,7 +1,7 @@
 package com.goku.im.logic.global;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 消息类型
  */
 public class MessageTypeConst {

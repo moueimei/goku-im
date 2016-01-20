@@ -1,7 +1,7 @@
 package com.goku.im.relation.common;
 
 /**
- * Created by milo on 15/12/1.
+ * Created by moueimei on 15/12/1.
  */
 public class GroupReplyType
 {

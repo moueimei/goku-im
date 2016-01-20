@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goku.im.relation.dao.ImUserFriendMapper" >
+  <resultMap id="BaseResultMap" type="com.goku.im.relation.entity.ImUserFriend" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="friend_id" property="friendId" jdbcType="INTEGER" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="BaseConditionSql" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="condition.userId != null" >
+         and user_id = #{condition.userId,jdbcType=INTEGER}
+      </if>
+      <if test="condition.friendId != null" >
+         and friend_id = #{condition.friendId,jdbcType=INTEGER}
+      </if>
+      <if test="condition.deleted != null" >
+         and deleted = #{condition.deleted,jdbcType=BIT}
+      </if>
+      <if test="condition.createTime != null" >
+         and create_time = #{condition.createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="condition.updateTime != null" >
+         and update_time = #{condition.updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="condition.createBy != null" >
+         and create_by = #{condition.createBy,jdbcType=VARCHAR}
+      </if>
+      <if test="condition.updateBy != null" >
+         and update_by = #{condition.updateBy,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </sql>
+  <sql id="BaseColumnList" >
+    id, user_id, friend_id, deleted, create_time, update_time, create_by, update_by
+  </sql>
+  <select id="selectByQuery" resultMap="BaseResultMap" parameterType="tv.acframework.orm.mybatis.query.Query" >
+    select
+    <if test="condition.distinct" >
+      distinct
+    </if>
+    <include refid="BaseColumnList" />
+    from im_user_friend
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+    <if test="condition.orderByClause != null" >
+      order by ${condition.orderByClause}
+    </if>
+    <include refid="common.pageLimit" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="BaseColumnList" />
+    from im_user_friend
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from im_user_friend
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByQuery" parameterType="tv.acframework.orm.mybatis.query.Query" >
+    delete from im_user_friend
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.goku.im.relation.entity.ImUserFriend" >
+    insert into im_user_friend (id, user_id, friend_id, 
+      deleted, create_time, update_time, 
+      create_by, update_by)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{friendId,jdbcType=INTEGER}, 
+      #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.goku.im.relation.entity.ImUserFriend" useGeneratedKeys="true" keyProperty="id" >
+    insert into im_user_friend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="friendId != null" >
+        friend_id,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="friendId != null" >
+        #{friendId,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByQuery" parameterType="tv.acframework.orm.mybatis.query.Query" resultType="java.lang.Integer" >
+    select count(*) from im_user_friend
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </select>
+  <update id="updateByMapSelective" parameterType="map" >
+    update im_user_friend
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.friendId != null" >
+        friend_id = #{record.friendId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleted != null" >
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </update>
+  <update id="updateByMap" parameterType="map" >
+    update im_user_friend
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      friend_id = #{record.friendId,jdbcType=INTEGER},
+      deleted = #{record.deleted,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      update_by = #{record.updateBy,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goku.im.relation.entity.ImUserFriend" >
+    update im_user_friend
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="friendId != null" >
+        friend_id = #{friendId,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goku.im.relation.entity.ImUserFriend" >
+    update im_user_friend
+    set user_id = #{userId,jdbcType=INTEGER},
+      friend_id = #{friendId,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

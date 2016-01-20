@@ -6,7 +6,7 @@ import redis.clients.jedis.Jedis;
 import com.goku.im.logic.global.RedisKeyConst;
 
 /**
- * Created by milo on 15/12/10.
+ * Created by moueimei on 15/12/10.
  * 待处理通知队列, 由pushservice集群将通知添加到该队列
  */
 @Repository

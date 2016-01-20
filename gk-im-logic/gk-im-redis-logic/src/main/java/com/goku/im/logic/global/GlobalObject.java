@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 全局公共对象
  */
 public class GlobalObject {

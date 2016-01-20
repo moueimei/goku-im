@@ -7,27 +7,23 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import java.util.List;
 
 /**
- * Created by milo on 15/12/26.
+ * Created by moueimei on 15/12/26.
  */
-public class ImBinaryDecoder extends ByteToMessageDecoder
-{
+public class ImBinaryDecoder extends ByteToMessageDecoder {
     @Override
-    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception
-    {
-        if(in.readableBytes() < 5)
+    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+        if (in.readableBytes() < 5)
             return;
 
         in.markReaderIndex();
         byte startFlag = in.readByte();
-        if(startFlag != ImBinaryUtil.START_FLAG)
-        {
+        if (startFlag != ImBinaryUtil.START_FLAG) {
             in.resetReaderIndex();
             return;
         }
 
         int dataLen = in.readInt();
-        if(in.readableBytes() < (dataLen + 1))
-        {
+        if (in.readableBytes() < (dataLen + 1)) {
             in.resetReaderIndex();
             return;
         }

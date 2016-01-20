@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.goku.im.relation.dao.ImGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.goku.im.relation.entity.ImGroup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="intro" property="intro" jdbcType="VARCHAR" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="BaseConditionSql" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="condition.groupName != null" >
+         and group_name = #{condition.groupName,jdbcType=VARCHAR}
+      </if>
+      <if test="condition.icon != null" >
+         and icon = #{condition.icon,jdbcType=VARCHAR}
+      </if>
+      <if test="condition.intro != null" >
+         and intro = #{condition.intro,jdbcType=VARCHAR}
+      </if>
+      <if test="condition.creatorId != null" >
+         and creator_id = #{condition.creatorId,jdbcType=INTEGER}
+      </if>
+      <if test="condition.deleted != null" >
+         and deleted = #{condition.deleted,jdbcType=BIT}
+      </if>
+      <if test="condition.createTime != null" >
+         and create_time = #{condition.createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="condition.updateTime != null" >
+         and update_time = #{condition.updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="condition.createBy != null" >
+         and create_by = #{condition.createBy,jdbcType=VARCHAR}
+      </if>
+      <if test="condition.updateBy != null" >
+         and update_by = #{condition.updateBy,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </sql>
+  <sql id="BaseColumnList" >
+    id, group_name, icon, intro, creator_id, deleted, create_time, update_time, create_by, 
+    update_by
+  </sql>
+  <select id="selectByQuery" resultMap="BaseResultMap" parameterType="tv.acframework.orm.mybatis.query.Query" >
+    select
+    <if test="condition.distinct" >
+      distinct
+    </if>
+    <include refid="BaseColumnList" />
+    from im_group
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+    <if test="condition..orderByClause != null" >
+      order by ${condition.orderByClause}
+    </if>
+    <include refid="common.pageLimit" />
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="BaseColumnList" />
+    from im_group
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByGroupIds" resultMap="BaseResultMap" parameterType="tv.acframework.orm.mybatis.query.Query" >
+    select
+    <include refid="BaseColumnList" />
+    from im_group
+    where id in
+    <foreach item="item" index="index" collection="ids" open="("
+             separator="," close=")">
+      #{item}
+    </foreach>
+    and deleted=#{deleted}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from im_group
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByQuery" parameterType="tv.acframework.orm.mybatis.query.Query" >
+    delete from im_group
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.goku.im.relation.entity.ImGroup" >
+    insert into im_group (id, group_name, icon, 
+      intro, creator_id, deleted, 
+      create_time, update_time, create_by, 
+      update_by)
+    values (#{id,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{creatorId,jdbcType=INTEGER}, #{deleted,jdbcType=BIT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.goku.im.relation.entity.ImGroup" useGeneratedKeys="true" keyProperty="id" >
+    insert into im_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupName != null" >
+        group_name,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="intro != null" >
+        intro,
+      </if>
+      <if test="creatorId != null" >
+        creator_id,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByQuery" parameterType="tv.acframework.orm.mybatis.query.Query" resultType="java.lang.Integer" >
+    select count(*) from im_group
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </select>
+  <update id="updateByMapSelective" parameterType="map" >
+    update im_group
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.groupName != null" >
+        group_name = #{record.groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null" >
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intro != null" >
+        intro = #{record.intro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatorId != null" >
+        creator_id = #{record.creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleted != null" >
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </update>
+  <update id="updateByMap" parameterType="map" >
+    update im_group
+    set id = #{record.id,jdbcType=INTEGER},
+      group_name = #{record.groupName,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      intro = #{record.intro,jdbcType=VARCHAR},
+      creator_id = #{record.creatorId,jdbcType=INTEGER},
+      deleted = #{record.deleted,jdbcType=BIT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      update_by = #{record.updateBy,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="BaseConditionSql" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goku.im.relation.entity.ImGroup" >
+    update im_group
+    <set >
+      <if test="groupName != null" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null" >
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goku.im.relation.entity.ImGroup" >
+    update im_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

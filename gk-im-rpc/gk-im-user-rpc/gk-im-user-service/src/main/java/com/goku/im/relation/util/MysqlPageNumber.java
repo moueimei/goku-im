@@ -1,7 +1,7 @@
 package com.goku.im.relation.util;
 
 /**
- * Created by milo on 15/12/3.
+ * Created by moueimei on 15/12/3.
  */
 public class MysqlPageNumber
 {

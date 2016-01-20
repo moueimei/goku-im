@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 
 /**
- * Created by milo on 15/12/12.
+ * Created by moueimei on 15/12/12.
  * 离线群组消息队列, 负责存储掉线用户的未读群组消息
  */
 @Repository

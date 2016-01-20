@@ -5,7 +5,7 @@ import com.goku.im.logic.global.MessageTypeConst;
 import org.json.JSONObject;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 消息实体类
  */
 public class Message {

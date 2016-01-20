@@ -1,23 +1,22 @@
 package com.goku.im.connector.handler;
 
+import com.goku.im.net.socket.server.logger.ServerLogger;
+import com.goku.im.net.socket.server.logger.ServerLoggerEntity;
 import io.netty.handler.logging.LoggingHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import com.goku.im.net.socket.server.logger.ServerLogger;
-import com.goku.im.net.socket.server.logger.ServerLoggerEntity;
+
 
 /**
- * Created by milo on 15/12/10.
+ * Created by moueimei on 15/12/10.
  */
 @Component
-public class ConnectionLogHandler extends LoggingHandler implements ServerLogger
-{
+public class ConnectionLogHandler extends LoggingHandler implements ServerLogger {
     private static final Logger logger = LoggerFactory.getLogger(ConnectionLogHandler.class);
 
     @Override
-    public void info(ServerLoggerEntity entity)
-    {
+    public void info(ServerLoggerEntity entity) {
         logger.info(entity.getMessage());
     }
 
@@ -27,8 +26,7 @@ public class ConnectionLogHandler extends LoggingHandler implements ServerLogger
     }
 
     @Override
-    public void error(ServerLoggerEntity entity)
-    {
+    public void error(ServerLoggerEntity entity) {
         logger.error(entity.getMessage(), entity.getCause());
     }
 }

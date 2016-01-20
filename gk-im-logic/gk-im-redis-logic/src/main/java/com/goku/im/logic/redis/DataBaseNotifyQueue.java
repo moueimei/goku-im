@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 
 /**
- * Created by milo on 15/12/10.
+ * Created by moueimei on 15/12/10.
  * 数据库待处理通知队列,负责存储用户触发的动作类通知,由logic集群负责添加,后端persistence集群读取并存入数据库
  */
 @Repository

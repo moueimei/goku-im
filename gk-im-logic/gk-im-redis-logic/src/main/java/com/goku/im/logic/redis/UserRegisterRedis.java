@@ -7,7 +7,7 @@ import redis.clients.jedis.Jedis;
 
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 用于处理用户和connectorIP的对应关系
  */
 @Repository

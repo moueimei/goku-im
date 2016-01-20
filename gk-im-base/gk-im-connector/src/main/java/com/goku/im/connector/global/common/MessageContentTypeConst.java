@@ -1,11 +1,10 @@
 package com.goku.im.connector.global.common;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 消息内容类型
  */
-public class MessageContentTypeConst
-{
+public class MessageContentTypeConst {
     /**
      * 文字
      */

@@ -1,17 +1,17 @@
 package com.goku.im.relation.redis.impl;
 
+import com.goku.im.relation.UserRelationRedisKeyConst;
+import com.goku.im.relation.entity.ImGroup;
+import com.goku.im.relation.redis.ImGroupRedis;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
-import tv.acfun.im.relation.UserRelationRedisKeyConst;
-import tv.acfun.im.relation.entity.ImGroup;
-import tv.acfun.im.relation.redis.ImGroupRedis;
 
 import java.util.Date;
 
 /**
- * Created by milo on 15/12/2.
+ * Created by moueimei on 15/12/2.
  */
 @Repository("imGroupRedis")
 public class ImGroupRedisImpl implements ImGroupRedis

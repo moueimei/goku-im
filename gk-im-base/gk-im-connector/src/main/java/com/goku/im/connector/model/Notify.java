@@ -3,10 +3,9 @@ package com.goku.im.connector.model;
 import org.json.JSONObject;
 
 /**
- * Created by milo on 15/12/10.
+ * Created by moueimei on 15/12/10.
  */
-public class Notify
-{
+public class Notify {
     private String notifyId;
     private int fromUserId;
     private int toUserId;
@@ -14,11 +13,10 @@ public class Notify
     private String notifyType;
     private long createTime = System.currentTimeMillis();
 
-    public Notify()
-    {}
+    public Notify() {
+    }
 
-    public Notify(JSONObject json)
-    {
+    public Notify(JSONObject json) {
         this.notifyId = json.optString("notifyId", "");
         this.fromUserId = json.optInt("fromUserId", 0);
         this.toUserId = json.optInt("toUserId", 0);
@@ -75,8 +73,7 @@ public class Notify
         this.createTime = createTime;
     }
 
-    public JSONObject toJson()
-    {
+    public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("notifyId", notifyId);
         json.put("fromUserId", fromUserId);

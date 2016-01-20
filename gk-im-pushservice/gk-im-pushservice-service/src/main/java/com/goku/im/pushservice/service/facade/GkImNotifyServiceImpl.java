@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 /**
  * Created by moueimei on 15/12/10.
  */
-@Service("acImNotifyService")
+@Service("gkImNotifyService")
 public class GkImNotifyServiceImpl implements GkImNotifyService,DisposableBean {
     private static final Logger logger = LoggerFactory.getLogger(GkImNotifyServiceImpl.class);
 

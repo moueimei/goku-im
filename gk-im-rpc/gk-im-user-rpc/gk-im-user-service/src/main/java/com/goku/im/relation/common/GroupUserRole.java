@@ -1,7 +1,7 @@
 package com.goku.im.relation.common;
 
 /**
- * Created by milo on 15/12/2.
+ * Created by moueimei on 15/12/2.
  */
 public class GroupUserRole
 {

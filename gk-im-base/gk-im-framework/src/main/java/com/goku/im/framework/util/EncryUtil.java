@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 /**
  * 
- * @author zhaodx
+ * @author moueimei
  *
  */
 public class EncryUtil

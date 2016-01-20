@@ -1,15 +1,15 @@
 package com.goku.im.relation.redis.impl;
 
+import com.goku.im.relation.UserRelationRedisKeyConst;
+import com.goku.im.relation.redis.ImUserFriendRedis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
-import tv.acfun.im.relation.UserRelationRedisKeyConst;
-import tv.acfun.im.relation.redis.ImUserFriendRedis;
 
 import java.util.Set;
 
 /**
- * Created by milo on 15/12/1.
+ * Created by moueimei on 15/12/1.
  */
 @Repository("imUserFriendRedis")
 public class ImUserFriendRedisImpl implements ImUserFriendRedis

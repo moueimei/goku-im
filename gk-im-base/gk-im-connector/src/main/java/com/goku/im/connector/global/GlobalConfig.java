@@ -1,11 +1,10 @@
 package com.goku.im.connector.global;
 
 /**
- * Created by milo on 15/11/26.
+ * Created by moueimei on 15/11/26.
  * 全局配置
  */
-public class GlobalConfig
-{
+public class GlobalConfig {
     /**
      * 启动端口
      */

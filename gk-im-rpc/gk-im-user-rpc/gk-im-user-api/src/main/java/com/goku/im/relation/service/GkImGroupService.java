@@ -1,14 +1,15 @@
 package com.goku.im.relation.service;
 
-import tv.acfun.im.relation.model.AcImGroup;
+
+import com.goku.im.relation.model.GkImGroup;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by milo on 15/12/1.
+ * Created by moueimei on 15/12/1.
  */
-public interface AcImGroupService
+public interface GkImGroupService
 {
     /**
      * 创建群组
@@ -44,7 +45,7 @@ public interface AcImGroupService
      * @param groupId 群组ID
      * @return
      */
-    AcImGroup getInfo(int groupId);
+    GkImGroup getInfo(int groupId);
 
     /**
      * 判定用户是否为群主
@@ -59,5 +60,5 @@ public interface AcImGroupService
      * @param groupIds 群组ID列表
      * @return
      */
-    List<AcImGroup> getGroupsByIds(List<Integer> groupIds);
+    List<GkImGroup> getGroupsByIds(List<Integer> groupIds);
 }

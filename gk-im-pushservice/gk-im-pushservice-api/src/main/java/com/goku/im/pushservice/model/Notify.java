@@ -6,8 +6,7 @@ import java.util.List;
 /**
  * Created by moueimei on 15/12/10.
  */
-public class Notify implements Serializable
-{
+public class Notify implements Serializable {
     private String notifyId;
     private int fromUserId;
     private List<Integer> toUserIds;

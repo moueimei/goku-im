@@ -37,19 +37,15 @@
         </dependency>
         <!-- collector qos 必须引入 -->
         <dependency>
-            <groupId>tv.acframework.qos</groupId>
-            <artifactId>ac-qos-collector-dubbo</artifactId>
+            <groupId>com.gkframework.qos</groupId>
+            <artifactId>gk-fw-qos-collector-dubbo</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!-- model 必须引入-->
+        <!-- spring orm -->
         <dependency>
-            <groupId>tv.acframework.framework</groupId>
-            <artifactId>ac-framework-model</artifactId>
-            <version>0.1.2-RELEASE</version>
-        </dependency>
-        <!-- orm 操作 必须引入 -->
-        <dependency>
-            <groupId>tv.acframework.orm</groupId>
-            <artifactId>ac-orm-mybatis</artifactId>
+            <groupId>com.gkframework</groupId>
+            <artifactId>gk-framework-orm-mybatis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!-- dubbo 服务注册方式 start 必须引入-->
         <dependency>
@@ -73,6 +69,7 @@
             <artifactId>zkclient</artifactId>
         </dependency>
         <!-- dubbo 服务注册方式 end -->
+
         <!-- 切面 必须 -->
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -96,21 +93,21 @@
         </dependency>
 
         <dependency>
-            <groupId>tv.acfun.im</groupId>
-            <artifactId>cas-user-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <groupId>com.goku.user</groupId>
+            <artifactId>goku-user-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>tv.acfun.im.relation</groupId>
-            <artifactId>tv-acfun-im-user-relation-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <groupId>com.goku.im</groupId>
+            <artifactId>gk-im-user-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>tv.acfun.im.pushservice</groupId>
-            <artifactId>tv-acfun-im-pushservice-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <groupId>com.goku.im</groupId>
+            <artifactId>gk-im-pushservice-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

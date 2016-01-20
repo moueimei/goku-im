@@ -1,0 +1,35 @@
+    <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+		<!-- 必须有 start-->
+		<dubbo:application name="${application.name}" owner="${application.owner:moueimei}" />
+
+		<dubbo:registry protocol="zookeeper" address="${registry.address}" />
+
+		<!-- 用dubbo协议在20880端口暴露服务 -->
+		<dubbo:protocol
+				name="dubbo"
+				port="${protocol.port}"
+				threadpool="fixed"
+				threads="100"
+				buffer="8192"
+				accepts="1000"
+				accesslog="true"
+				payload="88388608"
+				heartbeat="0" />
+		<!-- qos -->
+		<dubbo:annotation package="com.gkframework.qos.collector.dubbo"/>
+		<!-- 必须有 end-->
+		<!-- 消费配置 -->
+		<dubbo:consumer check="false" timeout="3000" retries="1" />
+		<!-- 此处说明需要调用的接口 -->
+		<dubbo:reference id="gkUserService" interface="com.goku.user.service.GkUserService" version="1.0.0"/>
+		<dubbo:reference id="loginService" interface="com.goku.user.service.LoginService" version="1.0.0"/>
+		<dubbo:reference id="acImGroupService" interface="com.goku.im.relation.service.GkImGroupService" version="1.0.0"/>
+		<dubbo:reference id="acImGroupUserService" interface="com.goku.im.relation.service.GkImGroupUserService" version="1.0.0"/>
+		<dubbo:reference id="acImUserFriendService" interface="com.goku.im.relation.service.GkImUserFriendService" version="1.0.0"/>
+</beans>

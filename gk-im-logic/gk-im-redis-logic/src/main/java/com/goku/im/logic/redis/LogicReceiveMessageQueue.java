@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 
 /**
- * Created by milo on 15/12/12.
+ * Created by moueimei on 15/12/12.
  * 待处理消息队列, 由connector集群将接收的消息添加到该队列
  */
 @Repository
